@@ -1,7 +1,5 @@
 package com.example.watchguide.data.datasources
 
-import com.example.watchguide.MoviePoster
-
 class MoviesPostersSource {
 
     val moviesPostersList: List<MoviePoster> = listOf(

@@ -1,10 +1,10 @@
-package com.example.watchguide
+package com.example.watchguide.ui
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class MovieDetailsParcel(
+data class MovieDetailsParcelModel(
     val position: Int,
     val posterUrl: String,
     val title: String?,

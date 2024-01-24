@@ -1,7 +1,6 @@
 package com.example.watchguide.data
 
-import com.example.watchguide.Movie
-import com.example.watchguide.MoviePoster
+import com.example.watchguide.data.datasources.MoviePoster
 import retrofit2.Call
 
 interface MoviesRepositoryInterface {

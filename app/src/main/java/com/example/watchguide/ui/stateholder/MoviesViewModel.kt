@@ -1,9 +1,9 @@
-package com.example.watchguide.domain
+package com.example.watchguide.ui.stateholder
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.watchguide.Movie
-import com.example.watchguide.MoviePoster
+import com.example.watchguide.data.Movie
+import com.example.watchguide.data.datasources.MoviePoster
 import com.example.watchguide.data.MoviesRepositoryImpl
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking

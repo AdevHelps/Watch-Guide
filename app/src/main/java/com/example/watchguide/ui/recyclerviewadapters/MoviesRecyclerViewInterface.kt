@@ -1,7 +1,7 @@
 package com.example.watchguide.ui.recyclerviewadapters
 
-import com.example.watchguide.Movie
-import com.example.watchguide.MoviePoster
+import com.example.watchguide.data.Movie
+import com.example.watchguide.data.datasources.MoviePoster
 
 interface MoviesRecyclerViewInterface {
 

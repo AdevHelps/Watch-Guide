@@ -9,16 +9,16 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.watchguide.Movie
-import com.example.watchguide.MovieDetailsParcel
+import com.example.watchguide.data.Movie
+import com.example.watchguide.ui.MovieDetailsParcelModel
 import com.example.watchguide.data.MoviesRepositoryImpl
-import com.example.watchguide.domain.MoviesViewModel
+import com.example.watchguide.ui.stateholder.MoviesViewModel
 import com.example.watchguide.R
 import com.example.watchguide.databinding.FragmentMoviesListBinding
-import com.example.watchguide.MoviePoster
+import com.example.watchguide.data.datasources.MoviePoster
 import com.example.watchguide.ui.recyclerviewadapters.MoviesRecyclerViewAdapter
 import com.example.watchguide.ui.recyclerviewadapters.MoviesRecyclerViewInterface
-import com.example.watchguide.domain.MoviesViewModelFactory
+import com.example.watchguide.ui.stateholder.MoviesViewModelFactory
 import java.lang.Exception
 
 class MoviesListFragment : Fragment(R.layout.fragment_movies_list), MoviesRecyclerViewInterface {
@@ -180,7 +180,7 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list), MoviesRecycl
                 if (moviesList != null && moviePosterList != null) {
 
                     val movie = moviesList[position]
-                    val movieDetailsParceled = MovieDetailsParcel(
+                    val movieDetailsParceled = MovieDetailsParcelModel(
                         position,
                         moviePosterList[position].url,
                         movie.title,

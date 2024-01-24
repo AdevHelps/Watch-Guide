@@ -1,4 +1,4 @@
-package com.example.watchguide.domain
+package com.example.watchguide.ui.stateholder
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

@@ -37,7 +37,7 @@
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <argument
             android:name="movieDetailsArgsName"
-            app:argType="com.example.watchguide.MovieDetailsParcel"/>
+            app:argType="com.example.watchguide.ui.MovieDetailsParcelModel"/>
     </fragment>
 
 </navigation>

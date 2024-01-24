@@ -1,4 +1,4 @@
-package com.example.watchguide
+package com.example.watchguide.data
 
 import com.google.gson.annotations.SerializedName
 

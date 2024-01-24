@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.watchguide.R
-import com.example.watchguide.Movie
-import com.example.watchguide.MoviePoster
+import com.example.watchguide.data.Movie
+import com.example.watchguide.data.datasources.MoviePoster
 import com.example.watchguide.databinding.WatchCardDesignBinding
 
 class MoviesRecyclerViewAdapter(
