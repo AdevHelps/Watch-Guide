@@ -1,7 +1,8 @@
-package com.example.watchguide.ui.fragments
+package com.example.watchguide.ui.uielements.fragments
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -10,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.watchguide.R
 import com.example.watchguide.databinding.FragmentMovieDetailsBinding
-import com.example.watchguide.ui.recyclerviewadapters.ActorsRecyclerViewAdapter
-import com.example.watchguide.ui.recyclerviewadapters.MovieGenreRecyclerViewAdapter
+import com.example.watchguide.ui.uielements.recyclerviewadapters.ActorsRecyclerViewAdapter
+import com.example.watchguide.ui.uielements.recyclerviewadapters.MovieGenreRecyclerViewAdapter
 
 class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
 
@@ -44,6 +45,14 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
             val actorsRecyclerViewAdapter = ActorsRecyclerViewAdapter(actorsList)
             setUpRecyclerView(actorsRecyclerViewAdapter, actorsRecyclerView)
 
+
+            val callback = object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+
+                    findNavController().popBackStack()
+                }
+            }
+            requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
         }
     }
 
