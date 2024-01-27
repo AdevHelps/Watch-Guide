@@ -1,4 +1,4 @@
-package com.example.watchguide.ui.fragments
+package com.example.watchguide.ui.uielements.fragments
 
 import android.content.Context
 import android.net.ConnectivityManager
@@ -16,14 +16,21 @@ import com.example.watchguide.ui.stateholder.MoviesViewModel
 import com.example.watchguide.R
 import com.example.watchguide.databinding.FragmentMoviesListBinding
 import com.example.watchguide.data.datasources.MoviePoster
-import com.example.watchguide.ui.recyclerviewadapters.MoviesRecyclerViewAdapter
-import com.example.watchguide.ui.recyclerviewadapters.MoviesRecyclerViewInterface
+import com.example.watchguide.ui.uielements.recyclerviewadapters.MoviesRecyclerViewAdapter
+import com.example.watchguide.ui.uielements.recyclerviewadapters.MoviesRecyclerViewInterface
 import com.example.watchguide.ui.stateholder.MoviesViewModelFactory
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.lang.Exception
 
 class MoviesListFragment : Fragment(R.layout.fragment_movies_list), MoviesRecyclerViewInterface {
 
     private lateinit var binding: FragmentMoviesListBinding
+    private val moviesRepositoryInterface = MoviesRepositoryImpl()
     private lateinit var moviesViewModel: MoviesViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,7 +53,6 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list), MoviesRecycl
                 }
             }
 
-            val moviesRepositoryInterface = MoviesRepositoryImpl()
             val moviesViewModelFactory = MoviesViewModelFactory(moviesRepositoryInterface)
             moviesViewModel = ViewModelProvider(
                 this@MoviesListFragment,
@@ -68,52 +74,59 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list), MoviesRecycl
                 moviesListProgressBar.visibility = View.VISIBLE
             }
 
-            moviesViewModel.sendRequest()
             moviesViewModel.getMoviesPostersFromRepository()
+            runBlocking {
+                val moviesListCall = withContext(Dispatchers.IO) {
+                    moviesRepositoryInterface.getMoviesFromRetrofit()
+                }
 
-            moviesViewModel.onResponseLiveData.observe(viewLifecycleOwner) { pair ->
-                moviesViewModel.moviesPostersListLiveData
-                    .observe(viewLifecycleOwner) { moviesPostersList ->
-                    val response = pair.second
-
-                    if (progressBarNeeded) {
-                        moviesListProgressBar.visibility = View.GONE
-                    }
-
-                    if (response.isSuccessful) {
-
-                        setUpMoviesRecyclerViewAdapter(
-                            response.body(),
-                            moviesPostersList
-                        )
-                        showExceptionInformer(false, null, null)
-                    }
-
-                        when(response.code()){
-                            404 -> showExceptionInformer(
-                                true,
-                                R.drawable.server,
-                                "Not found"
-                            )
-                            in 500..599 -> showExceptionInformer(
-                                true,
-                                R.drawable.server,
-                                "Server side error"
-                            )
-                        }
-
-                    moviesViewModel.onFailureLiveData.observe(viewLifecycleOwner) { pair ->
-                        val throwable = pair.second
+                val clonedMoviesListCall = moviesListCall.clone()
+                clonedMoviesListCall.enqueue(object : Callback<List<Movie>?> {
+                    override fun onResponse(call: Call<List<Movie>?>, response: Response<List<Movie>?>) {
 
                         if (progressBarNeeded) {
                             moviesListProgressBar.visibility = View.GONE
                         }
 
-                        if (throwable is Exception) {
+                        moviesViewModel.moviesPostersListLiveData
+                            .observe(viewLifecycleOwner) { moviesPostersList ->
+
+                                if (response.isSuccessful) {
+
+                                    setUpMoviesRecyclerViewAdapter(
+                                        response.body(),
+                                        moviesPostersList
+                                    )
+                                    showExceptionInformer(false, null, null)
+                                }
+
+                                when (response.code()) {
+                                    404 -> showExceptionInformer(
+                                        true,
+                                        R.drawable.server,
+                                        "Not found"
+                                    )
+
+                                    in 500..599 -> showExceptionInformer(
+                                        true,
+                                        R.drawable.server,
+                                        "Server side error"
+                                    )
+                                }
+                            }
+                    }
+
+                    override fun onFailure(call: Call<List<Movie>?>, t: Throwable) {
+
+                        if (progressBarNeeded) {
+                            moviesListProgressBar.visibility = View.GONE
+                        }
+
+                        if (t is Exception) {
                             showExceptionInformer(true, R.drawable.server, "Unexpected error")
                         }
                     }
-                }
+                })
             }
         }
     }
@@ -165,38 +178,28 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list), MoviesRecycl
 
     override fun onMovieClick(
         position: Int,
-        moviesListWithoutPosters: List<Movie>?,
-        moviesPostersList: List<MoviePoster>?,
+        moviePosterUrl: String,
+        movieTitle: String,
+        movieGenre: List<String>,
+        moviePlot: String,
+        movieActors: List<String>
     ) {
 
         moviesViewModel.leftOffPositionLiveData.value = position
 
-        moviesViewModel.onResponseLiveData.observe(viewLifecycleOwner) { pair ->
-            moviesViewModel.moviesPostersListLiveData.observe(viewLifecycleOwner) { moviePosterList ->
+        val movieDetailsParceled = MovieDetailsParcelModel(
+            moviePosterUrl,
+            movieTitle,
+            movieGenre,
+            moviePlot,
+            movieActors
+        )
 
-                val response = pair.second
-
-                val moviesList = response.body()
-                if (moviesList != null && moviePosterList != null) {
-
-                    val movie = moviesList[position]
-                    val movieDetailsParceled = MovieDetailsParcelModel(
-                        position,
-                        moviePosterList[position].url,
-                        movie.title,
-                        movie.genre,
-                        movie.plot,
-                        movie.actors
-                    )
-
-                    val action =
-                        MoviesListFragmentDirections
-                            .actionMoviesListFragmentToMovieDetailsFragment(
-                                movieDetailsParceled
-                            )
-                    findNavController().navigate(action)
-                }
-            }
-        }
+        val action =
+            MoviesListFragmentDirections
+                .actionMoviesListFragmentToMovieDetailsFragment(
+                    movieDetailsParceled
+                )
+        findNavController().navigate(action)
     }
 }

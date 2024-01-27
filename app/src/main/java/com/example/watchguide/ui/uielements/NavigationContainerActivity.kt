@@ -1,4 +1,4 @@
-package com.example.watchguide.ui
+package com.example.watchguide.ui.uielements
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

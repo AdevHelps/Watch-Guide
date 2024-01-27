@@ -5,7 +5,7 @@
     android:id="@+id/fragmentMovieDetailsContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.MovieDetailsFragment">
+    tools:context=".ui.uielements.fragments.MovieDetailsFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/movieNameToolbar"

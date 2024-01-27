@@ -1,4 +1,4 @@
-package com.example.watchguide.ui.recyclerviewadapters
+package com.example.watchguide.ui.uielements.recyclerviewadapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -67,11 +67,21 @@ class MoviesRecyclerViewAdapter(
 
         init {
             binding.movieCardCD.setOnClickListener {
-                moviesRecyclerViewInterface.onMovieClick(
-                    adapterPosition,
-                    moviesListWithoutPosters,
-                    moviesPostersList
-                )
+                val movieWithoutPoster = moviesListWithoutPosters?.get(adapterPosition)
+                val moviePoster = moviesPostersList?.get(adapterPosition)
+
+                if (moviePoster != null) {
+                    if (movieWithoutPoster != null) {
+                        moviesRecyclerViewInterface.onMovieClick(
+                            adapterPosition,
+                            moviePoster.url,
+                            movieWithoutPoster.title,
+                            movieWithoutPoster.genre,
+                            movieWithoutPoster.plot,
+                            movieWithoutPoster.actors
+                        )
+                    }
+                }
             }
         }
     }

@@ -1,13 +1,15 @@
-package com.example.watchguide.ui.recyclerviewadapters
+package com.example.watchguide.ui.uielements.recyclerviewadapters
 
-import com.example.watchguide.data.Movie
 import com.example.watchguide.data.datasources.MoviePoster
 
 interface MoviesRecyclerViewInterface {
 
     fun onMovieClick(
         position: Int,
-        moviesListWithoutPosters: List<Movie>?,
-        moviesPostersList: List<MoviePoster>?
-        )
+        moviePosterUrl: String,
+        movieTitle: String,
+        movieGenre: List<String>,
+        moviePlot: String,
+        movieActors: List<String>
+    )
 }

@@ -1,4 +1,4 @@
-package com.example.watchguide.ui.recyclerviewadapters
+package com.example.watchguide.ui.uielements.recyclerviewadapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

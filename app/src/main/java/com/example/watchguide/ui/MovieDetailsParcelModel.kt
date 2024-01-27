@@ -5,7 +5,6 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class MovieDetailsParcelModel(
-    val position: Int,
     val posterUrl: String,
     val title: String?,
     val genre: List<String>?,
