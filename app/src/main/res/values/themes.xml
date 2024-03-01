@@ -10,5 +10,11 @@
         <item name="android:textColorPrimary">@color/white</item>
     </style>
 
+    <style name="customCardView">
+        <item name="strokeColor">@android:color/transparent</item>
+        <item name="cardBackgroundColor">@color/paleBlue</item>
+        <item name="cornerRadius">@dimen/_11sdp</item>
+    </style>
+
     <style name="Theme.WatchGuide" parent="Base.Theme.WatchGuide" />
 </resources>

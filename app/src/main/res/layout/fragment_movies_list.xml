@@ -7,11 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".ui.uielements.fragments.MoviesListFragment">
 
-    <ProgressBar
+    <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/moviesListProgressBar"
-        android:layout_width="@dimen/_73sdp"
-        android:layout_height="@dimen/_73sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
         android:visibility="gone"
+        app:indicatorColor="@color/white"
+        app:indicatorSize="@dimen/_55sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

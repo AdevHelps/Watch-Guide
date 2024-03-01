@@ -5,15 +5,14 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/actorCardView"
+        style="@style/customCardView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_9sdp"
         android:layout_marginTop="@dimen/_6sdp"
         android:layout_marginEnd="@dimen/_9sdp"
-        app:cardBackgroundColor="@color/paleBlue"
-        app:cardCornerRadius="@dimen/_11sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -62,5 +61,5 @@
                 android:layout_below="@id/actorImageCL"/>
 
         </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
