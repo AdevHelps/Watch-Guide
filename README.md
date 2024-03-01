@@ -13,8 +13,8 @@ Watch Guide is an android application that provides a service to explore movies 
 
 ## About app
 This app uses:
+- Android Architecture
 - Navigation of Android Jetpack
-- MVVM architecture
 - Retrofit
 - Coil library
 - only one theme
