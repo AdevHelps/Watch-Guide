@@ -14,10 +14,11 @@ Watch Guide is an android application that provides a service to explore movies 
 ## About app
 This app uses:
 - Android Architecture
-- Navigation of Android Jetpack
+- Hilt
+- Android Jetpack Navigation
 - Retrofit
 - Coil library
-- only one theme
+- one single theme
 
 ## Contact us
 If you have any issues, questions, or suggestions, please feel free to contact Adev at adevhelps@gmail.com
