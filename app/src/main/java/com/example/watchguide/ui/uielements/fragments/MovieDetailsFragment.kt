@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.watchguide.R
 import com.example.watchguide.databinding.FragmentMovieDetailsBinding
-import com.example.watchguide.ui.uielements.recyclerviewadapters.ActorsRecyclerViewAdapter
-import com.example.watchguide.ui.uielements.recyclerviewadapters.MovieGenreRecyclerViewAdapter
+import com.example.watchguide.ui.uielements.recyclerviews.adapters.ActorsRecyclerViewAdapter
+import com.example.watchguide.ui.uielements.recyclerviews.adapters.MovieGenreRecyclerViewAdapter
 
 class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
 

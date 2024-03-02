@@ -1,4 +1,4 @@
-package com.example.watchguide.data
+package com.example.watchguide.ui.stateholder
 
 import android.content.Context
 import android.content.Context.CONNECTIVITY_SERVICE
@@ -6,7 +6,6 @@ import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkCapabilities.NET_CAPABILITY_INTERNET
 import android.net.NetworkRequest
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.watchguide.data.models.NetworkStates
 

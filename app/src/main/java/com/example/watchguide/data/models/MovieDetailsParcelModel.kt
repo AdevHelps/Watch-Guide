@@ -1,4 +1,4 @@
-package com.example.watchguide.ui
+package com.example.watchguide.data.models
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

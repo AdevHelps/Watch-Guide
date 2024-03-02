@@ -2,24 +2,29 @@ package com.example.watchguide.ui.stateholder
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.watchguide.data.datasources.MoviePoster
-import com.example.watchguide.data.MoviesRepositoryImpl
+import com.example.watchguide.data.models.MoviePoster
+import com.example.watchguide.data.repository.MoviesRepositoryInterface
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class MoviesViewModel(private val moviesRepositoryInterface: MoviesRepositoryImpl) : ViewModel() {
+@HiltViewModel
+class MoviesViewModel @Inject constructor(
+    private val moviesRepositoryInterface: MoviesRepositoryInterface
+) : ViewModel() {
 
-    var moviesPostersListLiveData = MutableLiveData<List<MoviePoster>>()
     var leftOffPositionLiveData = MutableLiveData<Int>()
 
-
-    fun getMoviesPostersFromRepository() {
-        runBlocking {
-            val moviesPostures = withContext(Dispatchers.IO) {
+    fun getMoviesPostersFromRepository(): MutableLiveData<List<MoviePoster>> {
+        val moviesPostersListLiveData = MutableLiveData<List<MoviePoster>>()
+        val moviesPostures = runBlocking {
+            withContext(Dispatchers.IO) {
                 moviesRepositoryInterface.getMoviePoster()
             }
-            moviesPostersListLiveData.value = moviesPostures
         }
+        moviesPostersListLiveData.value = moviesPostures
+        return moviesPostersListLiveData
     }
 }

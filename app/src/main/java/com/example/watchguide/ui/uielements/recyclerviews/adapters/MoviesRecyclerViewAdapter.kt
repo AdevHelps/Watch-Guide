@@ -1,13 +1,14 @@
-package com.example.watchguide.ui.uielements.recyclerviewadapters
+package com.example.watchguide.ui.uielements.recyclerviews.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.watchguide.R
-import com.example.watchguide.data.Movie
-import com.example.watchguide.data.datasources.MoviePoster
+import com.example.watchguide.data.models.Movie
+import com.example.watchguide.data.models.MoviePoster
 import com.example.watchguide.databinding.WatchCardDesignBinding
+import com.example.watchguide.ui.uielements.recyclerviews.MoviesRecyclerViewInterface
 
 class MoviesRecyclerViewAdapter(
     private val moviesListWithoutPosters: List<Movie>?,

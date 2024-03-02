@@ -1,6 +1,5 @@
-package com.example.watchguide.ui.uielements.recyclerviewadapters
+package com.example.watchguide.ui.uielements.recyclerviews
 
-import com.example.watchguide.data.datasources.MoviePoster
 
 interface MoviesRecyclerViewInterface {
 

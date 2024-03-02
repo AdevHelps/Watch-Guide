@@ -1,4 +1,4 @@
-package com.example.watchguide.data.datasources.moviessource
+package com.example.watchguide.data.datasources
 
 import com.example.watchguide.data.models.Movie
 import retrofit2.Call
