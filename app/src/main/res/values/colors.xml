@@ -6,4 +6,35 @@
     <color name="paleGreen">#3f5c6c</color>
     <color name="paleBlue">#35495e</color>
     <color name="red">#7f2a21</color>
+    <color name="primary">#006688</color>
+    <color name="onPrimary">#FFFFFF</color>
+    <color name="primaryContainer">#C2E8FF</color>
+    <color name="onPrimaryContainer">#001E2B</color>
+    <color name="secondary">#00629E</color>
+    <color name="onSecondary">#FFFFFF</color>
+    <color name="secondaryContainer">#CFE5FF</color>
+    <color name="onSecondaryContainer">#001D34</color>
+    <color name="tertiary">#9E4136</color>
+    <color name="onTertiary">#FFFFFF</color>
+    <color name="tertiaryContainer">#FFDAD5</color>
+    <color name="onTertiaryContainer">#410001</color>
+    <color name="error">#BA1A1A</color>
+    <color name="errorContainer">#FFDAD6</color>
+    <color name="onError">#FFFFFF</color>
+    <color name="onErrorContainer">#410002</color>
+    <color name="background">#FBFCFE</color>
+    <color name="onBackground">#191C1E</color>
+    <color name="surface">#FBFCFE</color>
+    <color name="onSurface">#191C1E</color>
+    <color name="surfaceVariant">#DCE3E9</color>
+    <color name="onSurfaceVariant">#40484D</color>
+    <color name="outline">#71787D</color>
+    <color name="inverseOnSurface">#F0F1F3</color>
+    <color name="inverseSurface">#2E3133</color>
+    <color name="inversePrimary">#76D1FF</color>
+    <color name="shadow">#000000</color>
+    <color name="surfaceTint">#006688</color>
+    <color name="outlineVariant">#C0C7CD</color>
+    <color name="scrim">#000000</color>
+
 </resources>

@@ -5,15 +5,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.watchguide.R
-import com.example.watchguide.data.models.Movie
-import com.example.watchguide.data.models.MoviePoster
+import com.example.watchguide.data.models.movie.Movie
+import com.example.watchguide.data.models.movie.MoviePoster
 import com.example.watchguide.databinding.WatchCardDesignBinding
 import com.example.watchguide.ui.uielements.recyclerviews.MoviesRecyclerViewInterface
 
 class MoviesRecyclerViewAdapter(
     private val moviesListWithoutPosters: List<Movie>?,
     private val moviesPostersList: List<MoviePoster>?,
-    private val moviesRecyclerViewInterface: MoviesRecyclerViewInterface,
+    private val moviesRecyclerViewInterface: MoviesRecyclerViewInterface
 ): RecyclerView.Adapter<MoviesRecyclerViewAdapter.MoviesViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {

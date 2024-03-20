@@ -11,11 +11,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.watchguide.ui.stateholder.MoviesViewModel
 import com.example.watchguide.R
+import com.example.watchguide.data.datasources.MoviesPostersSource
+import com.example.watchguide.data.datasources.MoviesWebServiceAPIsInterface
 import com.example.watchguide.databinding.FragmentMoviesListBinding
 import com.example.watchguide.data.models.ExceptionTypes
-import com.example.watchguide.data.models.Movie
-import com.example.watchguide.data.models.MovieDetailsParcelModel
-import com.example.watchguide.data.models.MoviePoster
+import com.example.watchguide.data.models.movie.Movie
+import com.example.watchguide.data.models.movie.MovieDetailsParcelModel
+import com.example.watchguide.data.models.movie.MoviePoster
 import com.example.watchguide.data.models.NetworkStates
 import com.example.watchguide.data.repository.MoviesRepositoryInterface
 import com.example.watchguide.ui.stateholder.ConnectionLiveData
@@ -38,6 +40,8 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list), MoviesRecycl
 
     private lateinit var binding: FragmentMoviesListBinding
     @Inject lateinit var moviesRepositoryInterface: MoviesRepositoryInterface
+    @Inject lateinit var moviesPostersSource: MoviesPostersSource
+    @Inject lateinit var moviesWebServiceAPIsInterface: MoviesWebServiceAPIsInterface
     private lateinit var moviesViewModel: MoviesViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,7 +49,10 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list), MoviesRecycl
         binding = FragmentMoviesListBinding.bind(view)
         binding.apply {
 
-            val moviesViewModelFactory = MoviesViewModelFactory(moviesRepositoryInterface)
+            val moviesViewModelFactory = MoviesViewModelFactory(
+                moviesRepositoryInterface,
+                moviesPostersSource
+            )
             moviesViewModel = ViewModelProvider(
                 this@MoviesListFragment,
                 moviesViewModelFactory
@@ -89,7 +96,7 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list), MoviesRecycl
             moviesViewModel.getMoviesPostersFromRepository()
             CoroutineScope(Dispatchers.IO).launch {
                 val moviesListCall =async {
-                    moviesRepositoryInterface.getMoviesFromRetrofit()
+                    moviesRepositoryInterface.getMoviesFromRetrofit(moviesWebServiceAPIsInterface)
                 }.await()
 
                 async {

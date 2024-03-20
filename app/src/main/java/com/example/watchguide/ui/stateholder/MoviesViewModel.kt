@@ -2,7 +2,8 @@ package com.example.watchguide.ui.stateholder
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.watchguide.data.models.MoviePoster
+import com.example.watchguide.data.datasources.MoviesPostersSource
+import com.example.watchguide.data.models.movie.MoviePoster
 import com.example.watchguide.data.repository.MoviesRepositoryInterface
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -12,7 +13,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MoviesViewModel @Inject constructor(
-    private val moviesRepositoryInterface: MoviesRepositoryInterface
+    private val moviesRepositoryInterface: MoviesRepositoryInterface,
+    private val moviesPostersSource: MoviesPostersSource
 ) : ViewModel() {
 
     var leftOffPositionLiveData = MutableLiveData<Int>()
@@ -21,7 +23,7 @@ class MoviesViewModel @Inject constructor(
         val moviesPostersListLiveData = MutableLiveData<List<MoviePoster>>()
         val moviesPostures = runBlocking {
             withContext(Dispatchers.IO) {
-                moviesRepositoryInterface.getMoviePoster()
+                moviesRepositoryInterface.getMoviePoster(moviesPostersSource)
             }
         }
         moviesPostersListLiveData.value = moviesPostures

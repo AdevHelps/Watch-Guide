@@ -1,4 +1,4 @@
-package com.example.watchguide.data.models
+package com.example.watchguide.data.models.movie
 
 import com.google.gson.annotations.SerializedName
 

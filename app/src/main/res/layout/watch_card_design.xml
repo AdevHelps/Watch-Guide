@@ -59,7 +59,7 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLines="2"
-                    android:textSize="@dimen/_19sdp"
+                    android:textSize="@dimen/_19ssp"
                     android:textStyle="bold" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -83,7 +83,7 @@
                         android:id="@+id/rateTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginStart="@dimen/_5ssp"
                         app:layout_constraintBottom_toBottomOf="@+id/movieTrendingImageView"
                         app:layout_constraintStart_toEndOf="@+id/movieTrendingImageView"
                         app:layout_constraintTop_toTopOf="@+id/movieTrendingImageView" />
@@ -96,7 +96,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/ratingCL"
                     android:textColor="@color/lightWhite"
-                    android:textSize="@dimen/_13sdp" />
+                    android:textSize="@dimen/_13ssp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -106,7 +106,7 @@
                     android:layout_marginEnd="@dimen/_4sdp"
                     android:text="@string/more"
                     android:textColor="#AFAFAF"
-                    android:textSize="@dimen/_15sdp"
+                    android:textSize="@dimen/_15ssp"
                     tools:ignore="TextSizeCheck" />
 
             </RelativeLayout>

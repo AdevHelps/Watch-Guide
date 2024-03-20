@@ -1,6 +1,6 @@
 package com.example.watchguide.data.datasources
 
-import com.example.watchguide.data.models.Movie
+import com.example.watchguide.data.models.movie.Movie
 import retrofit2.Call
 import retrofit2.http.GET
 

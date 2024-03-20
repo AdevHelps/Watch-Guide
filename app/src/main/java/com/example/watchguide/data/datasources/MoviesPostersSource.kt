@@ -1,6 +1,6 @@
 package com.example.watchguide.data.datasources
 
-import com.example.watchguide.data.models.MoviePoster
+import com.example.watchguide.data.models.movie.MoviePoster
 
 class MoviesPostersSource {
 

@@ -26,14 +26,14 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
 
             val passedMovieDetails = args.movieDetailsArgsName
 
-            backImageButton.setOnClickListener {
+            movieNameToolbar.setNavigationOnClickListener {
                 findNavController().popBackStack()
             }
 
             moviePosterImageDetail.load(passedMovieDetails.posterUrl)
             moviePosterImageDetail.contentDescription = "${passedMovieDetails.title} + poster"
 
-            movieTitleTV.text = passedMovieDetails.title
+            movieNameToolbar.title = passedMovieDetails.title
 
             val genderList = passedMovieDetails.genre
             val movieGenreRecyclerViewAdapter = MovieGenreRecyclerViewAdapter(genderList)
@@ -44,15 +44,6 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
             val actorsList = passedMovieDetails.actors
             val actorsRecyclerViewAdapter = ActorsRecyclerViewAdapter(actorsList)
             setUpRecyclerView(actorsRecyclerViewAdapter, actorsRecyclerView)
-
-
-            val callback = object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-
-                    findNavController().popBackStack()
-                }
-            }
-            requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
         }
     }
 
