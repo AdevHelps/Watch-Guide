@@ -5,20 +5,19 @@ Watch Guide is an android application that provides a service to explore movies 
 # Screenshots:
 <table>
    <tr>
-    <td align="center"><img src="https://github.com/AdevHelps/Quotes/assets/149101953/b0257341-e489-43a7-96a8-3005650e673c" width="300" alt="Screenshot 1"></td>
-   <td align="center"><img src="https://github.com/AdevHelps/Quotes/assets/149101953/380494e6-5e72-446f-8acd-6f4cd1fd1d63" width="300" alt="Screenshot 1"></td>
+    <td align="center"><img src="https://github.com/AdevHelps/Watch-Guide/assets/149101953/2e55df72-c226-44c0-9d57-f9f64c9241f1" width="300" alt="Screenshot 1"></td>
+   <td align="center"><img src="https://github.com/AdevHelps/Watch-Guide/assets/149101953/1a64365d-376a-4121-b2f0-099c6b945b62" width="300" alt="Screenshot 1"></td>
   </tr>
 </table>
 
-
 ## About app
 This app uses:
-- Android Architecture
+- App architecture design
 - Hilt
 - Android Jetpack Navigation
 - Retrofit
 - Coil library
-- one single theme
+- one theme mode
 
 ## Contact us
 If you have any issues, questions, or suggestions, please feel free to contact Adev at adevhelps@gmail.com
